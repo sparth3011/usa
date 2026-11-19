@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commission IQ — Procurement Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       LOGIN PAGE
+  ═══════════════════════════════════════════ -->
+  <div id="login-page" class="login-page">
+    <div class="login-bg-pattern"></div>
+    <div class="login-ambient-orb orb-1"></div>
+    <div class="login-ambient-orb orb-2"></div>
+
+    <div class="login-container desktop-login-container">
+      <div class="desktop-login-card">
+        
+        <!-- Top Brand Header -->
+        <div class="desktop-login-header">
+          <div class="logo-3d-card float-3d">
+            <img src="assets/logo.png" alt="Commission IQ Logo" class="login-logo-img" />
+          </div>
+          <div class="login-header-text">
+            <h1 class="login-header-title">Enterprise Sign In</h1>
+            <p class="login-header-subtitle">Commission IQ &bull; Autonomous Retail Procurement Platform</p>
+          </div>
+        </div>
+
+        <div class="login-content-columns">
+          
+          <!-- Column 1: Institutional Sign-In Form -->
+          <div class="login-column-form">
+            <div class="column-header">
+              <h2 class="column-title">Corporate Login</h2>
+              <span class="column-subtitle">Enter your institutional credentials</span>
+            </div>
+
+            <form id="login-form" class="login-form" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label" for="login-username">Username or Corporate Email</label>
+                <div class="input-icon-wrap">
+                  <i data-lucide="user" class="input-icon"></i>
+                  <input
+                    type="text"
+                    id="login-username"
+                    class="form-input input-with-icon"
+                    placeholder="e.g. procmgr or user@retail.com"
+                    autocomplete="username"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label class="form-label" for="login-password">Password</label>
+                  <span class="form-label-hint">Encrypted SSL/TLS</span>
+                </div>
+                <div class="input-icon-wrap">
+                  <i data-lucide="lock" class="input-icon"></i>
+                  <input
+                    type="password"
+                    id="login-password"
+                    class="form-input input-with-icon"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                  />
+                  <button type="button" class="input-icon-right toggle-password" tabindex="-1">
+                    <i data-lucide="eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div id="login-error" class="login-error" style="display:none;"></div>
+
+              <button type="submit" class="btn btn-primary btn-lg btn-full btn-3d-tactile" id="login-btn">
+                <span class="btn-text">Sign In to Platform</span>
+                <span class="btn-spinner" style="display:none;"><i data-lucide="loader-2" class="spin"></i></span>
+              </button>
+            </form>
+
+            <div class="login-security-notice">
+              <i data-lucide="shield-check"></i>
+              <span>Single Sign-On (SAML 2.0 / Okta) &bull; FIDO2 MFA Enabled</span>
+            </div>
+          </div>
+
+          <!-- Vertical Divider between columns -->
+          <div class="login-column-divider"></div>
+
+          <!-- Column 2: Demo Personas / Quick Switcher -->
+          <div class="login-column-demo">
+            <div class="column-header">
+              <h2 class="column-title">Demo Personas</h2>
+              <span class="column-subtitle">Select a pre-configured role to test</span>
+            </div>
+
+            <!-- 1-Click Instant Login (Jessica Williams) -->
+            <button type="button" class="btn-quick-login demo-cred" data-user="procmgr" data-pass="proc123" id="quick-proc-btn">
+              <div class="quick-login-left">
+                <div class="quick-avatar">JW</div>
+                <div class="quick-text">
+                  <div class="quick-name-row">
+                    <span class="quick-name">Jessica Williams</span>
+                    <span class="quick-badge">Procurement Manager</span>
+                  </div>
+                  <span class="quick-sub">★ 1-Click Instant Demo Login (Recommended)</span>
+                </div>
+              </div>
+              <div class="quick-arrow-wrap">
+                <i data-lucide="arrow-right" class="quick-arrow"></i>
+              </div>
+            </button>
+
+            <!-- Other Demo Roles Grid -->
+            <div class="demo-col-grid">
+              <div class="demo-cred active-suggested" data-user="procmgr" data-pass="proc123">
+                <div class="demo-cred-top">
+                  <span class="demo-cred-role badge badge-success">Proc. Manager</span>
+                  <span class="suggested-dot">★ Primary</span>
+                </div>
+                <span class="demo-cred-info">procmgr / proc123</span>
+              </div>
+
+              <div class="demo-cred" data-user="execsponsor" data-pass="exec123">
+                <div class="demo-cred-top">
+                  <span class="demo-cred-role badge badge-primary">Exec Sponsor</span>
+                </div>
+                <span class="demo-cred-info">execsponsor / exec123</span>
+              </div>
+
+              <div class="demo-cred" data-user="sysadmin" data-pass="admin123">
+                <div class="demo-cred-top">
+                  <span class="demo-cred-role badge badge-info">Sys Admin</span>
+                </div>
+                <span class="demo-cred-info">sysadmin / admin123</span>
+              </div>
+
+              <div class="demo-cred" data-user="catmgr" data-pass="cat123">
+                <div class="demo-cred-top">
+                  <span class="demo-cred-role badge badge-warning">Category Mgr</span>
+                </div>
+                <span class="demo-cred-info">catmgr / cat123</span>
+              </div>
+
+              <div class="demo-cred" data-user="finanalyst" data-pass="fin123">
+                <div class="demo-cred-top">
+                  <span class="demo-cred-role badge badge-neutral">Finance Analyst</span>
+                </div>
+                <span class="demo-cred-info">finanalyst / fin123</span>
+              </div>
+
+              <div class="demo-cred" data-user="vendor1" data-pass="vendor123">
+                <div class="demo-cred-top">
+                  <span class="demo-cred-role badge badge-neutral">Vendor User</span>
+                </div>
+                <span class="demo-cred-info">vendor1 / vendor123</span>
+              </div>
+            </div>
+
+            <div class="demo-roles-note">
+              <span>All 6 RBAC roles configured with custom permissions &amp; data visibility.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="desktop-login-footer">
+          <span>&copy; 2026 Commission IQ Inc. &mdash; Enterprise Edition v2.4</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN APP (hidden until login)
+  ═══════════════════════════════════════════ -->
+  <div id="app" class="app-container" style="display:none;">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <a href="#/dashboard" class="sidebar-logo-card" title="Commission IQ">
+            <img src="assets/logo.png" alt="Commission IQ Logo" class="sidebar-logo-full" />
+            <div class="sidebar-logo-collapsed-emblem">
+              <img src="assets/logo.png" alt="Commission IQ" class="sidebar-logo-crop" />
+            </div>
+          </a>
+        </div>
+        <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle sidebar">
+          <i data-lucide="panel-left-close"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-section-label">Main Menu</div>
+
+      <nav class="sidebar-nav">
+        <a href="#/dashboard"      class="nav-item" data-route="/dashboard">
+          <span class="nav-icon" style="color:#10b981;"><i data-lucide="zap"></i></span>
+          <span class="nav-label" style="font-weight:700;">AI Profit Engine&trade;</span>
+          <span class="badge" style="background:#10b981;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:800;">HOME</span>
+        </a>
+        <a href="#/ai-feasibility" class="nav-item" data-route="/ai-feasibility">
+          <span class="nav-icon" style="color:#818cf8;"><i data-lucide="sparkles"></i></span>
+          <span class="nav-label" style="font-weight:600;">AI Feasibility &amp; Insights</span>
+          <span class="badge" style="background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:0.625rem;padding:2px 6px;border-radius:10px;margin-left:auto;font-weight:700;letter-spacing:0.5px;">AI</span>
+        </a>
+        <a href="#/ranking"        class="nav-item" data-route="/ranking">
+          <span class="nav-icon" style="color:#f59e0b;"><i data-lucide="target"></i></span>
+          <span class="nav-label" style="font-weight:600;">Opportunity Ranking</span>
+          <span class="badge" style="background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;font-size:0.625rem;padding:2px 6px;border-radius:10px;margin-left:auto;font-weight:700;">PPS</span>
+        </a>
+        <a href="#/digital-twin"   class="nav-item" data-route="/digital-twin">
+          <span class="nav-icon" style="color:#8b5cf6;"><i data-lucide="cpu"></i></span>
+          <span class="nav-label" style="font-weight:600;">Digital Twin &amp; Bundles</span>
+          <span class="badge" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">TWIN</span>
+        </a>
+        <a href="#/leakage"        class="nav-item" data-route="/leakage">
+          <span class="nav-icon" style="color:#ef4444;"><i data-lucide="shield-alert"></i></span>
+          <span class="nav-label" style="font-weight:600;">Predictive Forensics</span>
+          <span class="badge" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">AI</span>
+        </a>
+        <a href="#/benchmarking"   class="nav-item" data-route="/benchmarking">
+          <span class="nav-icon"><i data-lucide="bar-chart-2"></i></span>
+          <span class="nav-label">Benchmark Analyzer</span>
+        </a>
+        <a href="#/benchmark-database" class="nav-item" data-route="/benchmark-database">
+          <span class="nav-icon"><i data-lucide="database"></i></span>
+          <span class="nav-label">Benchmark Database</span>
+        </a>
+        <a href="#/contracts"      class="nav-item" data-route="/contracts">
+          <span class="nav-icon" style="color:#6366f1;"><i data-lucide="file-text"></i></span>
+          <span class="nav-label" style="font-weight:600;">AI Contract Intelligence</span>
+          <span class="badge" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">AI</span>
+        </a>
+        <a href="#/renewal-hunter" class="nav-item" data-route="/renewal-hunter">
+          <span class="nav-icon" style="color:#f59e0b;"><i data-lucide="crosshair"></i></span>
+          <span class="nav-label" style="font-weight:600;">AI Renewal Hunter</span>
+          <span class="badge" style="background:#f59e0b;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">SCAN</span>
+        </a>
+        <a href="#/sourcing"       class="nav-item" data-route="/sourcing">
+          <span class="nav-icon"><i data-lucide="shopping-cart"></i></span>
+          <span class="nav-label">Sourcing &amp; Auctions</span>
+        </a>
+        <a href="#/auto-rfp"       class="nav-item" data-route="/auto-rfp">
+          <span class="nav-icon" style="color:#10b981;"><i data-lucide="sparkles"></i></span>
+          <span class="nav-label" style="font-weight:600;">AI Auto-RFP Builder</span>
+          <span class="badge" style="background:#10b981;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">1-CLICK</span>
+        </a>
+        <a href="#/vendors"        class="nav-item" data-route="/vendors">
+          <span class="nav-icon" style="color:#06b6d4;"><i data-lucide="building-2"></i></span>
+          <span class="nav-label" style="font-weight:600;">Vendor Portal</span>
+          <span class="badge" style="background:linear-gradient(135deg,#06b6d4,#0284c7);color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">PORTAL</span>
+        </a>
+        <a href="#/compliance"     class="nav-item" data-route="/compliance">
+          <span class="nav-icon" style="color:#10b981;"><i data-lucide="shield-check"></i></span>
+          <span class="nav-label" style="font-weight:600;">Compliance Monitoring</span>
+          <span class="badge" style="background:#10b981;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">REC</span>
+        </a>
+        <a href="#/recovery"       class="nav-item" data-route="/recovery">
+          <span class="nav-icon"><i data-lucide="refresh-cw"></i></span>
+          <span class="nav-label">Revenue Recovery</span>
+        </a>
+
+        <div class="sidebar-section-label">Insights</div>
+
+        <a href="#/executive"      class="nav-item" data-route="/executive">
+          <span class="nav-icon" style="color:#0ea5e9;"><i data-lucide="layout-dashboard"></i></span>
+          <span class="nav-label" style="font-weight:600;">Executive Dashboard</span>
+          <span class="badge" style="background:#0ea5e9;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">BOARD</span>
+        </a>
+        <a href="#/copilot"        class="nav-item" data-route="/copilot">
+          <span class="nav-icon" style="color:#a855f7;"><i data-lucide="bot"></i></span>
+          <span class="nav-label" style="font-weight:600;">AI Copilot Roadmap</span>
+          <span class="badge" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">COPILOT</span>
+        </a>
+        <a href="#/reports"        class="nav-item" data-route="/reports">
+          <span class="nav-icon"><i data-lucide="file-bar-chart"></i></span>
+          <span class="nav-label">Reports</span>
+        </a>
+        <a href="#/audit"          class="nav-item" data-route="/audit">
+          <span class="nav-icon"><i data-lucide="clipboard-list"></i></span>
+          <span class="nav-label">Audit Log</span>
+        </a>
+        <a href="#/notifications"  class="nav-item" data-route="/notifications">
+          <span class="nav-icon"><i data-lucide="bell"></i></span>
+          <span class="nav-label">Notifications</span>
+          <span class="nav-badge" id="sidebar-notif-badge"></span>
+        </a>
+
+        <div class="sidebar-section-label">System</div>
+
+        <a href="#/roadmap"        class="nav-item" data-route="/roadmap">
+          <span class="nav-icon" style="color:#6366f1;"><i data-lucide="map"></i></span>
+          <span class="nav-label" style="font-weight:600;">MVP Roadmap &amp; Matrix</span>
+          <span class="badge" style="background:#6366f1;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">PHASED</span>
+        </a>
+        <a href="#/security"       class="nav-item" data-route="/security">
+          <span class="nav-icon" style="color:#14b8a6;"><i data-lucide="lock"></i></span>
+          <span class="nav-label" style="font-weight:600;">Security &amp; Multi-Tenant</span>
+          <span class="badge" style="background:#14b8a6;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:8px;margin-left:auto;font-weight:700;">SSO</span>
+        </a>
+        <a href="#/workflow"       class="nav-item" data-route="/workflow">
+          <span class="nav-icon"><i data-lucide="git-branch"></i></span>
+          <span class="nav-label">Workflow</span>
+        </a>
+        <a href="#/settings"       class="nav-item" data-route="/settings">
+          <span class="nav-icon"><i data-lucide="settings"></i></span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user-mini">
+          <div class="avatar avatar-sm" id="sidebar-avatar"></div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name" id="sidebar-user-name"></span>
+            <span class="sidebar-user-role" id="sidebar-user-role"></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="main-wrapper" id="main-wrapper">
+
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar" id="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-mobile-toggle" id="mobile-menu-btn">
+            <i data-lucide="menu"></i>
+          </button>
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb-nav" aria-label="breadcrumb">
+            <ol class="breadcrumb" id="breadcrumb">
+              <li class="breadcrumb-item"><a href="#/dashboard">Home</a></li>
+              <li class="breadcrumb-item active" id="breadcrumb-current">Dashboard</li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="navbar-center">
+          <div class="search-wrap">
+            <i data-lucide="search" class="search-icon"></i>
+            <input
+              type="search"
+              id="global-search"
+              class="search-input"
+              placeholder="Search vendors, contracts, reports…"
+            />
+            <kbd class="search-shortcut">⌘K</kbd>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <a href="#/copilot" class="btn btn-outline btn-sm" style="display:inline-flex;align-items:center;gap:0.35rem;border-color:#a855f7;color:#a855f7;font-weight:700;text-decoration:none;margin-right:0.5rem;">
+            <i data-lucide="sparkles" style="width:14px;height:14px;"></i> AI Copilot
+          </a>
+          <!-- Notification Bell -->
+          <div class="navbar-action" id="notif-dropdown-wrap">
+            <button class="icon-btn" id="notif-btn" title="Notifications">
+              <i data-lucide="bell"></i>
+              <span class="badge-dot" id="notif-badge" style="display:none;"></span>
+            </button>
+            <div class="dropdown-panel notif-panel" id="notif-panel" style="display:none;">
+              <div class="dropdown-header">
+                <span class="dropdown-title">Notifications</span>
+                <button class="btn-ghost btn-sm" id="mark-all-read">Mark all read</button>
+              </div>
+              <div class="notif-list" id="notif-list"></div>
+              <div class="dropdown-footer">
+                <a href="#/notifications" class="btn-ghost btn-sm">View all notifications</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Help -->
+          <button class="icon-btn" title="Help">
+            <i data-lucide="help-circle"></i>
+          </button>
+
+          <!-- User Avatar Dropdown -->
+          <div class="navbar-action" id="user-dropdown-wrap">
+            <button class="user-avatar-btn" id="user-avatar-btn">
+              <div class="avatar" id="navbar-avatar"></div>
+              <div class="user-info-compact">
+                <span class="user-name-compact" id="navbar-user-name"></span>
+                <span class="user-role-compact" id="navbar-user-role"></span>
+              </div>
+              <i data-lucide="chevron-down" class="chevron"></i>
+            </button>
+            <div class="dropdown-panel user-panel" id="user-panel" style="display:none;">
+              <div class="user-panel-header">
+                <div class="avatar avatar-lg" id="user-panel-avatar"></div>
+                <div>
+                  <div class="user-panel-name" id="user-panel-name"></div>
+                  <div class="user-panel-email" id="user-panel-email"></div>
+                  <span class="badge badge-primary" id="user-panel-role"></span>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a href="#/settings" class="dropdown-item">
+                <i data-lucide="user"></i> My Profile
+              </a>
+              <a href="#/settings" class="dropdown-item">
+                <i data-lucide="settings"></i> Preferences
+              </a>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item dropdown-item-danger" id="logout-btn">
+                <i data-lucide="log-out"></i> Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE CONTENT -->
+      <main class="page-content" id="page-content">
+        <div class="page-header" id="page-header">
+          <div class="page-title-wrap">
+            <h1 class="page-title" id="page-title">Dashboard</h1>
+            <p class="page-description" id="page-description"></p>
+          </div>
+          <div class="page-actions" id="page-actions"></div>
+        </div>
+        <div id="main-content" class="main-content"></div>
+      </main>
+    </div>
+
+    <!-- SIDEBAR OVERLAY (mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       TOAST CONTAINER
+  ═══════════════════════════════════════════ -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ═══════════════════════════════════════════
+       MODAL CONTAINER
+  ═══════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="modal-backdrop" style="display:none;">
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title"></h3>
+        <button class="modal-close" id="modal-close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer" id="modal-footer"></div>
+    </div>
+  </div>
+
+  <!-- JS — load in order -->
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
