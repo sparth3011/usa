@@ -4211,3 +4211,33 @@ html, body {
     margin-bottom: 0.75rem !important;
   }
 }
+
+@media screen and (max-width: 860px) {
+  /* Prevent horizontal blowout from any button row or tab bar */
+  .tab-btn {
+    white-space: nowrap !important;
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  div:has(> .tab-btn),
+  div:has(> button.tab-btn) {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin !important;
+  }
+
+  .page-header,
+  .page-header > div,
+  .ranking-hero-banner > div,
+  .opportunity-engine-hero > div {
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+  }
+}
