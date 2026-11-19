@@ -3174,7 +3174,7 @@ window.renderPredictiveForensics = function() {
 
     <!-- TAB 2: Automated Dispute Generation -->
     <div id="forensics-tab-disputes" style="display:${AppState.forensicsActiveTab === 'disputes' ? 'block' : 'none'};">
-      <div style="display:grid;grid-template-columns:360px 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+      <div class="twin-split-grid" style="display:grid;gap:1.5rem;margin-bottom:1.5rem;">
         <!-- Left: Case Selector & Controls -->
         <div>
           <div class="card" style="margin-bottom:1rem;">
@@ -6644,7 +6644,7 @@ window.renderDigitalTwin = function() {
           </div>
           <div style="display:flex;gap:0.5rem;align-items:center;">
             <span style="font-size:0.8125rem;color:var(--text-muted);font-weight:600;">Scenario Question:</span>
-            <select class="form-select form-select-sm" style="width:360px;" onchange="selectTwinScenario(this.value)">
+            <select class="form-select form-select-sm" style="width:100%;max-width:360px;" onchange="selectTwinScenario(this.value)">
               ${scenarios.map(s => `
                 <option value="${s.id}" ${s.id === activeScenario.id ? 'selected' : ''}>${esc(s.query)}</option>
               `).join('')}
@@ -6675,7 +6675,7 @@ window.renderDigitalTwin = function() {
             </div>
 
             <!-- The 4 Required Calculations Grid -->
-            <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:1.25rem;margin-bottom:1.5rem;">
+            <div class="twin-metrics-grid" style="display:grid;gap:1.25rem;margin-bottom:1.5rem;">
               <!-- 1. Commission Impact -->
               <div class="twin-metric-pill" style="border-left:4px solid #10b981;">
                 <div style="font-size:0.75rem;color:#94a3b8;text-transform:uppercase;font-weight:700;">1. Commission Impact</div>
@@ -6730,7 +6730,7 @@ window.renderDigitalTwin = function() {
         </div>
 
         <!-- Implementation Cost Breakdown & Risk Analysis -->
-        <div style="padding:0 1.5rem 1.5rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div class="twin-2col-grid" style="padding:0 1.5rem 1.5rem 1.5rem;display:grid;gap:1.5rem;">
           <div class="card" style="margin-bottom:0;">
             <div class="card-header">
               <div class="card-title">Implementation Cost Itemization ($14,500 Total)</div>
@@ -6777,7 +6777,7 @@ window.renderDigitalTwin = function() {
               <div class="card-title">4-Week Phased Cutover & Go-Live Roadmap</div>
             </div>
             <div class="card-body">
-              <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:1rem;">
+              <div class="twin-timeline-grid" style="display:grid;gap:1rem;">
                 <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.75rem;">
                   <div style="font-weight:700;color:#6366f1;font-size:0.8125rem;text-transform:uppercase;">Week 1: Setup</div>
                   <div style="font-weight:700;margin:4px 0;">Gateway Key Injection</div>
@@ -6827,7 +6827,7 @@ window.renderDigitalTwin = function() {
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:1rem;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.2);padding-top:1.25rem;">
+        <div class="twin-metrics-grid" style="display:grid;gap:1rem;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.2);padding-top:1.25rem;">
           <div>
             <div style="font-size:0.75rem;color:#cbd5e1;text-transform:uppercase;font-weight:700;">Combined Annual Volume</div>
             <div style="font-size:1.4rem;font-weight:800;color:#ffffff;">$${(activeBundle.totalBundleVolume/1000000).toFixed(1)}M / yr</div>
@@ -6848,7 +6848,7 @@ window.renderDigitalTwin = function() {
       </div>
 
       <!-- Bundle Selector & Components -->
-      <div style="display:grid;grid-template-columns:340px 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+      <div class="twin-split-grid" style="display:grid;gap:1.5rem;margin-bottom:1.5rem;">
         <!-- Left: Discovered Bundles List -->
         <div>
           <div class="card" style="margin-bottom:1rem;">
@@ -6938,7 +6938,7 @@ window.renderDigitalTwin = function() {
               <div class="card-title">Decoded Multi-Product Synergies & Margin Multipliers</div>
             </div>
             <div class="card-body">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="twin-2col-grid" style="display:grid;gap:1rem;">
                 ${(activeBundle.bundleSynergies || []).map(s => `
                   <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.875rem;">
                     <div style="font-weight:700;color:#6366f1;font-size:0.875rem;display:flex;align-items:center;gap:0.35rem;">
@@ -6967,7 +6967,7 @@ window.renderDigitalTwin = function() {
           </div>
         </div>
         <div class="card-body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <div class="twin-2col-grid" style="display:grid;gap:1.5rem;">
             <div>
               <div class="form-group">
                 <label class="form-label" style="font-weight:700;">Product / Service to Model</label>
@@ -6979,7 +6979,7 @@ window.renderDigitalTwin = function() {
                 <input id="sim-current-vendor" type="text" class="form-input" value="${esc(AppState.customSim.currentVendor)}" oninput="AppState.customSim.currentVendor = this.value;">
               </div>
 
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="twin-2col-grid" style="display:grid;gap:1rem;">
                 <div class="form-group">
                   <label class="form-label" style="font-weight:700;">Current Commission (%)</label>
                   <input id="sim-current-rate" type="number" step="0.05" class="form-input" value="${AppState.customSim.currentRate}" oninput="updateCustomSim();">
@@ -7065,7 +7065,7 @@ window.updateCustomSim = function() {
         <span>AI Simulation Engine Decision Intelligence Results</span>
         <span class="badge badge-success">Decision: Recommended</span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:1rem;">
+      <div class="twin-timeline-grid" style="display:grid;gap:1rem;">
         <div style="background:#fff;border:1px solid #cbd5e1;padding:1rem;border-radius:6px;">
           <div style="font-size:0.75rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;">1. Commission Impact</div>
           <div style="font-size:1.5rem;font-weight:900;color:#15803d;margin:4px 0;">+$${Math.round(deltaComm).toLocaleString()} / yr</div>
@@ -10222,7 +10222,7 @@ window.openCreateReverseAuctionModal = function() {
         <input type="text" class="form-input" id="new-auc-name" placeholder="e.g. Master Gift Card Distribution Reverse Auction 2027" />
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="twin-2col-grid" style="display:grid;gap:1rem;">
         <div class="form-group">
           <label class="form-label">Category *</label>
           <select class="form-input" id="new-auc-cat">
@@ -10236,7 +10236,7 @@ window.openCreateReverseAuctionModal = function() {
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="twin-2col-grid" style="display:grid;gap:1rem;">
         <div class="form-group">
           <label class="form-label">Auction Sourcing Mode *</label>
           <select class="form-input" id="new-auc-mode">
@@ -10257,7 +10257,7 @@ window.openCreateReverseAuctionModal = function() {
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="twin-2col-grid" style="display:grid;gap:1rem;">
         <div class="form-group">
           <label class="form-label">Opening Starting Rate (%)</label>
           <input type="number" step="0.05" class="form-input" id="new-auc-start" value="3.50" />
@@ -11053,7 +11053,7 @@ window.renderVendorPortal = function() {
           </div>
         </div>
         <div class="card-body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <div class="twin-2col-grid" style="display:grid;gap:1.5rem;">
             <div>
               <label class="form-label" style="font-weight:700;">Minimum Scorecard Threshold for Live Bidding</label>
               <div style="display:flex;align-items:center;gap:1rem;margin-top:0.5rem;">
@@ -11276,7 +11276,7 @@ window.openAddProductModal = function(vendorId) {
             <option value="Gift Cards">Gift Cards</option>
           </select>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="twin-2col-grid" style="display:grid;gap:1rem;">
           <div class="form-group">
             <label class="form-label">Proposed Commission Rate (%)</label>
             <input id="modal-sku-rate" type="number" step="0.05" class="form-input" placeholder="e.g. 4.50" value="4.50">
@@ -11849,7 +11849,7 @@ window.renderCompliance = function() {
           </div>
         </div>
         <div class="card-body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <div class="twin-2col-grid" style="display:grid;gap:1.5rem;">
             <div>
               <label class="form-label" style="font-weight:700;">Dollar Variance Alert Threshold ($)</label>
               <input id="cfg-shortfall-dollars" type="number" class="form-input" value="${MockData.complianceConfig.varianceAlertThresholdDollars || 250}">
@@ -13973,7 +13973,7 @@ window.renderAutoRfpBuilder = function() {
 
       <div class="card-body">
         <!-- 5 Auto-Generated Specification Sections -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div class="twin-2col-grid" style="display:grid;gap:1.5rem;">
           <!-- 1. Product List & 2. Volumes -->
           <div>
             <div style="font-weight:800;font-size:1rem;color:#0f172a;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;">

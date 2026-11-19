@@ -4285,3 +4285,51 @@ html, body {
     flex-wrap: wrap !important;
   }
 }
+
+/* ── DIGITAL TWIN RESPONSIVE GRIDS ────────────────────────── */
+.twin-metrics-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.twin-2col-grid {
+  grid-template-columns: 1fr 1fr;
+}
+.twin-split-grid {
+  grid-template-columns: 340px 1fr;
+}
+.twin-timeline-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 860px) {
+  .twin-metrics-grid,
+  .twin-2col-grid,
+  .twin-split-grid,
+  .twin-timeline-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    gap: 1rem !important;
+  }
+
+  .twin-decision-card {
+    padding: 1rem !important;
+  }
+
+  .portal-tabs-nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    max-width: 100% !important;
+  }
+
+  .portal-tab-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.8125rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+}
