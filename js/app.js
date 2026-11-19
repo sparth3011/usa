@@ -1306,7 +1306,7 @@ window.renderDashboard = function() {
     </div>
 
     <!-- Bottom Row -->
-    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:1rem">
+    <div class="chart-grid dashboard-bottom-grid" style="margin-bottom:1.5rem">
 
       <!-- Top Vendors Bar Chart -->
       <div class="card">
